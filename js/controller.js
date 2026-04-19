@@ -31,7 +31,45 @@
  *     Now hurry Marty! Or I will be stuck in the past forever!
  *
  *     Doc Brown - 1955-11-05
+ *
+ *     MaikyPi - 2026-04-19
  *******************************************************/
 
-// HINT:
-// setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.
+/* HINT:
+setInterval(functionName, 1000); will call functionName() every 1000 miliseconds.*/
+
+/* Info: controller.js = responsible for importing everything and creating the objects (acts as coordinator) */
+
+/*  1. TimeModel import */
+
+
+import {TimeModel} from "./model.time.js";
+import {ViewDigital} from "./view.digital.js";
+import {ViewAnalog} from "./view.analagoue.js";
+
+const CLOCK = new TimeModel();
+const DIGITAL = new ViewDigital();
+const ANALOG = new ViewAnalog();
+
+DIGITAL.timeUpdate(CLOCK);
+
+/* 2. time update */
+
+function update() {
+    CLOCK.tick();
+    DIGITAL.timeUpdate(CLOCK);
+    ANALOG.updateTime(CLOCK);
+}
+
+setInterval(update, 1000); /* Updates the clock every second (1000 ms = 1 second) */
+
+/* 3. Button and the event "click" */
+
+const BUTTON = document.getElementById("saveTime");
+
+BUTTON.addEventListener("click", function() {
+    CLOCK.saveTime();
+    console.log("Button is clicked and time is saved :-) ");
+    BUTTON.textContent = "Saved!";
+    BUTTON.classList.add("saved"); /* I create a class => to be able to change the design, after the button is clicked */
+});
