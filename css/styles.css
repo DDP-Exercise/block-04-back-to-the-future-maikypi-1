@@ -1,10 +1,112 @@
-body{
-    background-image: url('../img/BTTFII.webp');
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    background-image: url("/img/BodyImage.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+}
+
+#digital-clock {
+
+    border: 2px solid white;
+    background-image: url("/img/Photo1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;  /* horizontal */
+    align-items: center;      /* vertical */
+
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 40px;
+    color: white;
+
+}
+
+#analog-clock { /* Create the clock circle */
+    width: 200px;
+    height: 200px;
+    border: 2px solid orange;
+    background-image: url("/img/Photo2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
+    border-radius: 50%;
+    position: relative;
+}
+
+#hour, #minute, #second {
+    position: absolute; /* Positions the clock hands in the center (relative to the parent) */
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom center;
+    transform: rotate(90deg); /* Start position at 12:00 */
+}
+
+#hour {
+    width: 4px;
+    height: 50px;
+    background: white;
+}
+
+#minute {
+    width: 3px;
+    height: 70px;
+    background: white;
+}
+#second {
+    width: 2px;
+    height: 90px;
+    background: darkorange;
+}
+
+#saveTime {
+    background-image: url("/img/Photo3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 15px solid darkred;
+
+    align-self: center;
+
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+    cursor: pointer; /* mouse change to a hand */
+}
+
+#saveTime span{
+    font-size: 30px;
+    background-color: rgba(245, 245, 245, 0.76);
+}
+
+.fun {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px grey solid;
+}
+
+/* if the button is clicked */
+.saved {
+    font-size: 30px;
+    font-weight: bold;
 }
